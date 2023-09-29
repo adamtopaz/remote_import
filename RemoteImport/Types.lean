@@ -45,3 +45,6 @@ def Package.env (P : Package) (module : Name) :
     |>.run (s := { moduleNameSet := ({} : NameHashSet).insert module })
   let env ← finalizeImport s #[{module}] {} 0
   return (region, env)
+
+def Environment.addAndCompileRec (e : Environment) (d : Declaration) : CoreM Unit := do
+  addAndCompile d 
